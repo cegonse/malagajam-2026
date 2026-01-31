@@ -1,9 +1,9 @@
 extends Area2D
 
-@export
 var spawn_point: Node2D
 
 func _ready() -> void:
+	spawn_point = get_parent().get_node("Spawn")
 	body_entered.connect(on_body_entered)
 	spawn_point.get_node("Sprite2D").scale = Vector2.ZERO
 
