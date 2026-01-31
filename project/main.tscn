@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://btl1dkw37106e" path="res://room_trigger.gd" id="6_7mycd"]
 [ext_resource type="Texture2D" uid="uid://beri2v532fq6r" path="res://sprites/box_orange.png" id="7_272bh"]
 [ext_resource type="Texture2D" uid="uid://c63yfscmidnjq" path="res://sprites/spawn.png" id="7_kek77"]
+[ext_resource type="Script" uid="uid://pcdlbgueh07n" path="res://camera.gd" id="9_4c57u"]
+[ext_resource type="Texture2D" uid="uid://fk75yav4aauy" path="res://sprites/box_black.png" id="9_kek77"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
 size = Vector2(16, 16)
@@ -28,9 +30,6 @@ size = Vector2(12, 4)
 size = Vector2(12, 6)
 
 [node name="Main" type="Node2D" unique_id=421798667]
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1913603423]
-zoom = Vector2(2.7, 2.7)
 
 [node name="r320x240" type="Sprite2D" parent="." unique_id=1031881270]
 scale = Vector2(20, 15)
@@ -384,3 +383,19 @@ disabled = true
 position = Vector2(-14, 13)
 shape = SubResource("RectangleShape2D_272bh")
 disabled = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1913603423 node_paths=PackedStringArray("left_border", "right_border")]
+zoom = Vector2(2.7, 2.7)
+script = ExtResource("9_4c57u")
+left_border = NodePath("Border")
+right_border = NodePath("Border2")
+
+[node name="Border" type="Sprite2D" parent="Camera2D" unique_id=1917362740]
+position = Vector2(-240, 0)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("9_kek77")
+
+[node name="Border2" type="Sprite2D" parent="Camera2D" unique_id=1556491275]
+position = Vector2(240, 0)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("9_kek77")
