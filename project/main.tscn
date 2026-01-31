@@ -720,15 +720,52 @@ position = Vector2(-116, 84)
 texture = ExtResource("7_kek77")
 
 [node name="Spikes9" type="Area2D" parent="Level6" unique_id=668923301]
-position = Vector2(-140, 16)
+position = Vector2(-140, 8)
 rotation = 1.5707964
-scale = Vector2(7, 1)
+scale = Vector2(6, 1)
 script = ExtResource("5_5vw27")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level6/Spikes9" unique_id=1211149471]
 shape = SubResource("RectangleShape2D_5vw27")
 
 [node name="Sprite2D" type="Sprite2D" parent="Level6/Spikes9" unique_id=1299117151]
+scale = Vector2(1, 0.5)
+texture = ExtResource("3_h2yge")
+
+[node name="Spikes10" type="Area2D" parent="Level6" unique_id=1371491640]
+position = Vector2(140, 0)
+rotation = 1.5707964
+scale = Vector2(13, 1)
+script = ExtResource("5_5vw27")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level6/Spikes10" unique_id=715016703]
+shape = SubResource("RectangleShape2D_5vw27")
+
+[node name="Sprite2D" type="Sprite2D" parent="Level6/Spikes10" unique_id=795251284]
+scale = Vector2(1, 0.5)
+texture = ExtResource("3_h2yge")
+
+[node name="Spikes11" type="Area2D" parent="Level6" unique_id=2019723174]
+position = Vector2(112, 100)
+scale = Vector2(4, 1)
+script = ExtResource("5_5vw27")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level6/Spikes11" unique_id=1502092512]
+shape = SubResource("RectangleShape2D_5vw27")
+
+[node name="Sprite2D" type="Sprite2D" parent="Level6/Spikes11" unique_id=1116149758]
+scale = Vector2(1, 0.5)
+texture = ExtResource("3_h2yge")
+
+[node name="Spikes12" type="Area2D" parent="Level6" unique_id=1408074541]
+position = Vector2(16, -100)
+scale = Vector2(16, 1)
+script = ExtResource("5_5vw27")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level6/Spikes12" unique_id=285001614]
+shape = SubResource("RectangleShape2D_5vw27")
+
+[node name="Sprite2D" type="Sprite2D" parent="Level6/Spikes12" unique_id=382675146]
 scale = Vector2(1, 0.5)
 texture = ExtResource("3_h2yge")
 
@@ -782,9 +819,30 @@ shape = SubResource("RectangleShape2D_h2yge")
 [node name="Sprite2D" type="Sprite2D" parent="Level6/Roof3" unique_id=1230117071]
 texture = ExtResource("1_ig7tw")
 
+[node name="Roof4" type="StaticBody2D" parent="Level6" unique_id=1769160818]
+position = Vector2(77, -82)
+scale = Vector2(4, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level6/Roof4" unique_id=89829950]
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Sprite2D" type="Sprite2D" parent="Level6/Roof4" unique_id=342926351]
+texture = ExtResource("1_ig7tw")
+
+[node name="Roof5" type="StaticBody2D" parent="Level6" unique_id=2043150570]
+position = Vector2(101, -50)
+rotation = 1.5707964
+scale = Vector2(3, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level6/Roof5" unique_id=1209558316]
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Sprite2D" type="Sprite2D" parent="Level6/Roof5" unique_id=260083568]
+texture = ExtResource("1_ig7tw")
+
 [node name="Left" type="StaticBody2D" parent="Level6" unique_id=929662478]
-position = Vector2(-152, -24)
-scale = Vector2(1, 12)
+position = Vector2(-152, -32)
+scale = Vector2(1, 11)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level6/Left" unique_id=742932902]
 shape = SubResource("RectangleShape2D_h2yge")
@@ -862,8 +920,8 @@ shape = SubResource("RectangleShape2D_h2yge")
 texture = ExtResource("1_ig7tw")
 
 [node name="Right" type="StaticBody2D" parent="Level8" unique_id=713870398]
-position = Vector2(152, 0)
-scale = Vector2(1, 15)
+position = Vector2(152, -24)
+scale = Vector2(1, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level8/Right" unique_id=453156081]
 shape = SubResource("RectangleShape2D_h2yge")
@@ -1026,18 +1084,6 @@ position = Vector2(-116, 84)
 [node name="Sprite2D" type="Sprite2D" parent="Level7/Spawn" unique_id=169507321]
 texture = ExtResource("7_kek77")
 
-[node name="Spikes9" type="Area2D" parent="Level7" unique_id=1888944111]
-position = Vector2(-25, 39)
-scale = Vector2(7, 1)
-script = ExtResource("5_5vw27")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level7/Spikes9" unique_id=356578295]
-shape = SubResource("RectangleShape2D_5vw27")
-
-[node name="Sprite2D" type="Sprite2D" parent="Level7/Spikes9" unique_id=50807763]
-scale = Vector2(1, 0.5)
-texture = ExtResource("3_h2yge")
-
 [node name="Floor" type="StaticBody2D" parent="Level7" unique_id=819252836]
 position = Vector2(0, 112)
 scale = Vector2(20, 1)
@@ -1049,8 +1095,8 @@ shape = SubResource("RectangleShape2D_h2yge")
 texture = ExtResource("1_ig7tw")
 
 [node name="Roof" type="StaticBody2D" parent="Level7" unique_id=1216692207]
-position = Vector2(0, -112)
-scale = Vector2(20, 1)
+position = Vector2(-104, -112)
+scale = Vector2(7, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level7/Roof" unique_id=1894782642]
 shape = SubResource("RectangleShape2D_h2yge")
@@ -1058,9 +1104,19 @@ shape = SubResource("RectangleShape2D_h2yge")
 [node name="Sprite2D" type="Sprite2D" parent="Level7/Roof" unique_id=540581433]
 texture = ExtResource("1_ig7tw")
 
+[node name="Roof2" type="StaticBody2D" parent="Level7" unique_id=1874866876]
+position = Vector2(96, -112)
+scale = Vector2(6, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level7/Roof2" unique_id=1108381085]
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Sprite2D" type="Sprite2D" parent="Level7/Roof2" unique_id=1850884345]
+texture = ExtResource("1_ig7tw")
+
 [node name="Left" type="StaticBody2D" parent="Level7" unique_id=1543550288]
-position = Vector2(-152, 24)
-scale = Vector2(1, 10)
+position = Vector2(-104, 0)
+scale = Vector2(7, 13)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level7/Left" unique_id=1396961750]
 shape = SubResource("RectangleShape2D_h2yge")
@@ -1069,13 +1125,23 @@ shape = SubResource("RectangleShape2D_h2yge")
 texture = ExtResource("1_ig7tw")
 
 [node name="Right" type="StaticBody2D" parent="Level7" unique_id=704311454]
-position = Vector2(152, 0)
-scale = Vector2(1, 15)
+position = Vector2(104, -7.9999995)
+scale = Vector2(7, 14)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level7/Right" unique_id=619659029]
 shape = SubResource("RectangleShape2D_h2yge")
 
 [node name="Sprite2D" type="Sprite2D" parent="Level7/Right" unique_id=777750548]
+texture = ExtResource("1_ig7tw")
+
+[node name="Right2" type="StaticBody2D" parent="Level7" unique_id=950199043]
+position = Vector2(0, 72)
+scale = Vector2(6, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level7/Right2" unique_id=986108120]
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Sprite2D" type="Sprite2D" parent="Level7/Right2" unique_id=325963156]
 texture = ExtResource("1_ig7tw")
 
 [node name="Level5" type="Node2D" parent="." unique_id=719045654]
