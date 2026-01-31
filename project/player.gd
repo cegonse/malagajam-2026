@@ -2,7 +2,18 @@ extends CharacterBody2D
 
 const horizontal_speed = 100.0
 const jump_speed = 300.0
+const max_vertical_velocity = 500.0
 var can_rotate = false
+var left_foot_sensor: Area2D = null
+var right_foot_sensor: Area2D = null
+var left_foot_collider: CollisionShape2D = null
+var right_foot_collider: CollisionShape2D = null
+
+func _ready() -> void:
+	left_foot_sensor = get_node("LeftFootSensor")
+	right_foot_sensor = get_node("RightFootSensor")
+	left_foot_collider = get_node("LeftFootCollider")
+	right_foot_collider = get_node("RightFootCollider")
 
 func handle_vertical_movement(delta: float) -> void:
 	var gravity_magnitude = (get_gravity() * delta).y
@@ -10,7 +21,8 @@ func handle_vertical_movement(delta: float) -> void:
 	var jump_velocity = up_direction * jump_speed
 	
 	if not is_on_floor():
-		velocity += gravity
+		if velocity.length() < max_vertical_velocity:
+			velocity += gravity
 	else:
 		can_rotate = true;
 
@@ -74,8 +86,26 @@ func handle_rotation_direct() -> void:
 		elif close_to(up_direction, Vector2.LEFT):
 			rotation = -PI*0.5
 
+func handle_coyote_time() -> void:
+	left_foot_collider.disabled = true
+	right_foot_collider.disabled = true
+
+	if not is_on_floor():
+		return
+	
+	var left = left_foot_sensor.has_overlapping_bodies()
+	var right = right_foot_sensor.has_overlapping_bodies()
+	
+	if left and not right:
+		left_foot_collider.disabled = true
+		right_foot_collider.disabled = false
+	elif not left and right:
+		left_foot_collider.disabled = false
+		right_foot_collider.disabled = true
+
 func _physics_process(delta: float) -> void:
 	#handle_rotation_discrete()
+	handle_coyote_time()
 	handle_rotation_direct()
 	handle_vertical_movement(delta)
 	handle_horizontal_movement(delta)
