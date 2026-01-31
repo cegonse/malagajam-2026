@@ -45,10 +45,6 @@ region = Rect2(48, 0, 24, 38)
 atlas = ExtResource("9_efxa6")
 region = Rect2(72, 0, 24, 38)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2cqfq"]
-atlas = ExtResource("9_efxa6")
-region = Rect2(240, 0, 24, 38)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_yaehf"]
 atlas = ExtResource("9_efxa6")
 region = Rect2(264, 0, 24, 38)
@@ -56,10 +52,6 @@ region = Rect2(264, 0, 24, 38)
 [sub_resource type="AtlasTexture" id="AtlasTexture_074og"]
 atlas = ExtResource("9_efxa6")
 region = Rect2(288, 0, 24, 38)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_getpj"]
-atlas = ExtResource("9_efxa6")
-region = Rect2(312, 0, 24, 38)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ryguw"]
 atlas = ExtResource("9_efxa6")
@@ -135,9 +127,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2cqfq")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_yaehf")
 }, {
 "duration": 1.0,
@@ -149,9 +138,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_getpj")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_ryguw")
 }, {
 "duration": 1.0,
@@ -159,7 +145,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"jump_owl",
-"speed": 8.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -636,11 +622,6 @@ texture_filter = 1
 position = Vector2(117, 90)
 texture = ExtResource("7_efxa6")
 
-[node name="Trinket2" type="Sprite2D" parent="Level2" unique_id=446296175]
-texture_filter = 1
-position = Vector2(-127, -87)
-texture = ExtResource("7_efxa6")
-
 [node name="Level4" type="Node2D" parent="." unique_id=1918200894]
 position = Vector2(640, 0)
 
@@ -700,7 +681,7 @@ script = ExtResource("3_1bvp3")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Player" unique_id=2041622182]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_w48qg")
-animation = &"fall_owl"
+animation = &"jump"
 autoplay = "idle"
 
 [node name="Origin" type="Sprite2D" parent="Player" unique_id=936946532]

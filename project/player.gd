@@ -24,7 +24,7 @@ func update_animations() -> void:
 	var rot = int(rotation_degrees)
 	var mask_suffix = "_owl" if has_mask else ""
 	
-	if prev == "idle" + mask_suffix:
+	if prev == "idle" + mask_suffix or prev == "walk" + mask_suffix:
 		if rot == 0 or rot == -180:
 			if abs(velocity.x) > 0:
 				var flip = false if velocity.x > 0 else true
