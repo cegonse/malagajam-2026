@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 const horizontal_speed = 100.0
 const jump_speed = 300.0
@@ -14,6 +15,12 @@ func _ready() -> void:
 	right_foot_sensor = get_node("RightFootSensor")
 	left_foot_collider = get_node("LeftFootCollider")
 	right_foot_collider = get_node("RightFootCollider")
+
+func on_death(spawn: Node2D) -> void:
+	velocity = Vector2.ZERO
+	position = spawn.global_position
+	rotation = spawn.rotation
+	up_direction = Vector2.UP.rotated(rotation)
 
 func handle_vertical_movement(delta: float) -> void:
 	var gravity_magnitude = (get_gravity() * delta).y
