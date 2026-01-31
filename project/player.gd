@@ -5,11 +5,18 @@ const jump_speed = 300.0
 
 func _process(delta: float) -> void:
 	var rotation = 0
+	var rotate_left = Input.is_action_just_pressed("rotate_left")
+	var rotate_right = Input.is_action_just_pressed("rotate_right")
+	var rotation_axis = -int(rotate_left) + int(rotate_right)
 	
-	if Input.is_action_just_pressed("rotate_right"):
-		rotation = PI*0.5
-	elif Input.is_action_just_pressed("rotate_left"):
-		rotation = -PI*0.5
+	if close_to(up_direction, Vector2.UP):
+		rotation = PI*0.5 * rotation_axis
+	elif close_to(up_direction, Vector2.DOWN):
+		rotation = PI*0.5 * -rotation_axis
+	elif close_to(up_direction, Vector2.RIGHT):
+		rotation = PI*0.5 * rotation_axis
+	elif close_to(up_direction, Vector2.LEFT):
+		rotation = PI*0.5 * rotation_axis
 	
 	if rotation != 0:
 		rotate(rotation)
