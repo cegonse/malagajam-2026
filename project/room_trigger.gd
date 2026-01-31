@@ -1,12 +1,11 @@
 extends Area2D
 
 @export
+var camera: Camera2D
 var target_room: Node2D
 
-@export
-var camera: Camera2D
-
 func _ready() -> void:
+	target_room = get_parent()
 	body_entered.connect(on_body_entered)
 
 func already_on_room() -> bool:
@@ -16,7 +15,6 @@ func already_on_room() -> bool:
 func on_body_entered(body: Node2D) -> void:
 	if body.name != "Player":
 		return
-	print("(cam)" , camera.position , " - ", "(pos)", target_room.position)
 		
 	if already_on_room():
 		return
