@@ -7,14 +7,11 @@ const max_vertical_velocity = 500.0
 var can_rotate = false
 var left_foot_sensor: Area2D = null
 var right_foot_sensor: Area2D = null
-var left_foot_collider: CollisionShape2D = null
-var right_foot_collider: CollisionShape2D = null
+var coyote_timer = 0.0
 
 func _ready() -> void:
 	left_foot_sensor = get_node("LeftFootSensor")
 	right_foot_sensor = get_node("RightFootSensor")
-	left_foot_collider = get_node("LeftFootCollider")
-	right_foot_collider = get_node("RightFootCollider")
 
 func on_death(spawn: Node2D) -> void:
 	velocity = Vector2.ZERO
@@ -22,18 +19,37 @@ func on_death(spawn: Node2D) -> void:
 	rotation = spawn.rotation
 	up_direction = Vector2.UP.rotated(rotation)
 
+func is_on_coyote_time(delta: float, on_floor: bool) -> bool:
+	var left = left_foot_sensor.has_overlapping_bodies()
+	var right = right_foot_sensor.has_overlapping_bodies()
+
+	coyote_timer = coyote_timer + delta
+	
+	if on_floor:
+		coyote_timer = 0
+	
+	if left and not right:
+		return coyote_timer <= 0.3
+	elif not left and right:
+		return coyote_timer <= 0.3
+	
+	return false
+
 func handle_vertical_movement(delta: float) -> void:
 	var gravity_magnitude = (get_gravity() * delta).y
 	var gravity = up_direction.rotated(PI) * gravity_magnitude
 	var jump_velocity = up_direction * jump_speed
+	var on_floor = is_on_floor()
 	
-	if not is_on_floor():
+	if not on_floor:
 		if velocity.length() < max_vertical_velocity:
 			velocity += gravity
 	else:
 		can_rotate = true;
-
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+		
+	var on_coyote_time = is_on_coyote_time(delta, on_floor)
+	var can_jump = on_floor or on_coyote_time
+	if Input.is_action_just_pressed("jump") and can_jump:
 		velocity = jump_velocity
 
 func close_to(v1: Vector2, v2: Vector2) -> bool:
@@ -93,26 +109,8 @@ func handle_rotation_direct() -> void:
 		elif close_to(up_direction, Vector2.LEFT):
 			rotation = -PI*0.5
 
-func handle_coyote_time() -> void:
-	left_foot_collider.disabled = true
-	right_foot_collider.disabled = true
-
-	if not is_on_floor():
-		return
-	
-	var left = left_foot_sensor.has_overlapping_bodies()
-	var right = right_foot_sensor.has_overlapping_bodies()
-	
-	if left and not right:
-		left_foot_collider.disabled = true
-		right_foot_collider.disabled = false
-	elif not left and right:
-		left_foot_collider.disabled = false
-		right_foot_collider.disabled = true
-
 func _physics_process(delta: float) -> void:
 	#handle_rotation_discrete()
-	handle_coyote_time()
 	handle_rotation_direct()
 	handle_vertical_movement(delta)
 	handle_horizontal_movement(delta)
