@@ -4,14 +4,49 @@ class_name Player
 const horizontal_speed = 100.0
 const jump_speed = 300.0
 const max_vertical_velocity = 500.0
+var animator: AnimatedSprite2D
 var can_rotate = false
 var left_foot_sensor: Area2D = null
 var right_foot_sensor: Area2D = null
 var coyote_timer = 0.0
+var has_mask = true
 
 func _ready() -> void:
 	left_foot_sensor = get_node("LeftFootSensor")
 	right_foot_sensor = get_node("RightFootSensor")
+	animator = get_node("Sprite2D")
+
+func _process(delta: float) -> void:
+	update_animations()
+
+func update_animations() -> void:
+	var prev = animator.animation
+	var rot = int(rotation_degrees)
+	var mask_suffix = "_owl" if has_mask else ""
+	
+	if prev == "idle" + mask_suffix or prev == "walk" + mask_suffix:
+		if rot == 0 or rot == -180:
+			if abs(velocity.x) > 0:
+				var flip = false if velocity.x > 0 else true
+				animator.flip_h = flip
+				animator.play("walk" + mask_suffix)
+		else:
+			if abs(velocity.y) > 0:
+				var flip = false if velocity.y > 0 else true
+				animator.flip_h = flip
+				animator.play("walk" + mask_suffix)
+	
+	if prev == "jump" + mask_suffix or prev == "fall" + mask_suffix:
+		if is_on_floor():
+			animator.play("idle" + mask_suffix)
+	
+	if prev == "walk":
+		if velocity.length() < 0.1:
+			animator.play("idle" + mask_suffix)
+	
+	if prev != "jump" + mask_suffix:
+		if up_direction == Vector2.UP and velocity.y > 0 or up_direction == Vector2.DOWN and velocity.y < 0 or up_direction == Vector2.LEFT and velocity.x > 0 or up_direction == Vector2.RIGHT and velocity.x < 0:
+			animator.play("fall" + mask_suffix)
 
 func on_death(spawn: Node2D) -> void:
 	velocity = Vector2.ZERO
@@ -31,7 +66,7 @@ func is_on_coyote_time(delta: float, on_floor: bool) -> bool:
 	if left and not right:
 		return coyote_timer <= 0.3
 	elif not left and right:
-		return coyote_timer <= 0.3
+		return coyote_timer <=  0.3
 	
 	return false
 
@@ -51,6 +86,8 @@ func handle_vertical_movement(delta: float) -> void:
 	var can_jump = on_floor or on_coyote_time
 	if Input.is_action_just_pressed("jump") and can_jump:
 		velocity = jump_velocity
+		var mask_suffix = "_owl" if has_mask else ""
+		animator.play("jump" + mask_suffix)
 
 func close_to(v1: Vector2, v2: Vector2) -> bool:
 	return v1.distance_to(v2) < 0.1
