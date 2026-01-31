@@ -14,7 +14,13 @@ size = Vector2(16, 16)
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
-size = Vector2(10, 32)
+size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
+size = Vector2(12, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_272bh"]
+size = Vector2(12, 6)
 
 [node name="Main" type="Node2D" unique_id=421798667]
 script = ExtResource("1_lquwl")
@@ -107,8 +113,8 @@ shape = SubResource("RectangleShape2D_h2yge")
 texture = ExtResource("1_ig7tw")
 
 [node name="Platform8" type="StaticBody2D" parent="Level1" unique_id=1133427940]
-position = Vector2(-112, 27)
-scale = Vector2(1, 4)
+position = Vector2(-120.00001, 27)
+scale = Vector2(3, 4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1/Platform8" unique_id=2084168065]
 shape = SubResource("RectangleShape2D_h2yge")
@@ -319,7 +325,7 @@ shape = SubResource("RectangleShape2D_h2yge")
 texture = ExtResource("1_ig7tw")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1157070088]
-position = Vector2(-71, 88)
+position = Vector2(-71, 80)
 script = ExtResource("3_1bvp3")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1136031303]
@@ -331,5 +337,27 @@ position = Vector2(0, 15.999999)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_ig7tw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=832719775]
+[node name="Collider" type="CollisionShape2D" parent="Player" unique_id=832719775]
 shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="RightFootSensor" type="Area2D" parent="Player" unique_id=1887247072]
+position = Vector2(14, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/RightFootSensor" unique_id=1347026647]
+shape = SubResource("RectangleShape2D_7mycd")
+
+[node name="LeftFootSensor" type="Area2D" parent="Player" unique_id=673181641]
+position = Vector2(-14, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/LeftFootSensor" unique_id=802000222]
+shape = SubResource("RectangleShape2D_7mycd")
+
+[node name="RightFootCollider" type="CollisionShape2D" parent="Player" unique_id=938314438]
+position = Vector2(14, 13)
+shape = SubResource("RectangleShape2D_272bh")
+disabled = true
+
+[node name="LeftFootCollider" type="CollisionShape2D" parent="Player" unique_id=1636157877]
+position = Vector2(-14, 13)
+shape = SubResource("RectangleShape2D_272bh")
+disabled = true
