@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const horizontal_speed = 100.0
 const jump_speed = 300.0
+var can_rotate = false
 
 func handle_vertical_movement(delta: float) -> void:
 	var gravity_magnitude = (get_gravity() * delta).y
@@ -10,6 +11,8 @@ func handle_vertical_movement(delta: float) -> void:
 	
 	if not is_on_floor():
 		velocity += gravity
+	else:
+		can_rotate = true;
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity = jump_velocity
@@ -29,8 +32,7 @@ func handle_horizontal_movement(delta: float) -> void:
 	elif should_move_vertically:
 		velocity.y = -y_axis * horizontal_speed
 
-func handle_rotation() -> void:
-	var rotation = 0
+func handle_rotation_discrete() -> void:
 	var rotate_left = Input.is_action_just_pressed("rotate_left")
 	var rotate_right = Input.is_action_just_pressed("rotate_right")
 	var rotation_axis = -int(rotate_left) + int(rotate_right)
@@ -44,12 +46,37 @@ func handle_rotation() -> void:
 	elif close_to(up_direction, Vector2.LEFT):
 		rotation = PI*0.5 * rotation_axis
 	
-	if rotation != 0:
+	if can_rotate:
+		can_rotate = false
 		rotate(rotation)
 		up_direction = up_direction.rotated(-rotation)
 
+func handle_rotation_direct() -> void:
+	var x_axis = Input.get_axis("rotate_left", "rotate_right")
+	var y_axis = Input.get_axis("rotate_down", "rotate_up")
+	var axis = Vector2(-int(x_axis), int(y_axis))
+	var prev_up_rotation = up_direction
+	
+	var target_angle = int(rad_to_deg(abs(axis.angle_to(up_direction))))
+	if target_angle == -180 and is_on_floor():
+		return
+	
+	if can_rotate and axis != Vector2.ZERO:
+		can_rotate = false
+		up_direction = axis
+		
+		if close_to(up_direction, Vector2.UP):
+			rotation = 0
+		elif close_to(up_direction, Vector2.DOWN):
+			rotation = -PI
+		elif close_to(up_direction, Vector2.RIGHT):
+			rotation = PI*0.5
+		elif close_to(up_direction, Vector2.LEFT):
+			rotation = -PI*0.5
+
 func _physics_process(delta: float) -> void:
-	handle_rotation()
+	#handle_rotation_discrete()
+	handle_rotation_direct()
 	handle_vertical_movement(delta)
 	handle_horizontal_movement(delta)
 	move_and_slide()
