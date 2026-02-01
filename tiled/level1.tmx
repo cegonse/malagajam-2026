@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="1">
  <tileset firstgid="1" source="Tileset_Full.tsx"/>
- <imagelayer id="2" name="Image Layer 1">
-  <image source="../../../Imatges/Captures de pantalla/Captura de pantalla de 2026-02-01 13-47-42.png" width="320" height="240"/>
- </imagelayer>
  <layer id="1" name="Tile Layer 1" width="20" height="15">
   <data encoding="csv">
 13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,
