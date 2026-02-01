@@ -18,6 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://bf88fn5sa7e7f" path="res://sprites/TreeBottomBg.png" id="12_2cqfq"]
 [ext_resource type="Script" uid="uid://cbpx4bjyrln2" path="res://mask_collectible.gd" id="13_074og"]
 [ext_resource type="Texture2D" uid="uid://cvccej3m2prym" path="res://sprites/MaskCollectible.png" id="13_yaehf"]
+[ext_resource type="Script" uid="uid://cjsyp4x1cghk5" path="res://feather.gd" id="19_82xsv"]
+[ext_resource type="Texture2D" uid="uid://dc3utngi5ecv6" path="res://sprites/Golden Feather.png" id="19_cegan"]
+[ext_resource type="Texture2D" uid="uid://bjem1lxybovkj" path="res://sprites/Golden Feather_UI.png" id="19_getpj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
 size = Vector2(16, 16)
@@ -177,6 +180,8 @@ size = Vector2(13.015778, 26.006287)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
 size = Vector2(12, 6)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82xsv"]
+
 [node name="Main" type="Node2D" unique_id=421798667]
 
 [node name="r320x240" type="Sprite2D" parent="." unique_id=1031881270]
@@ -186,7 +191,7 @@ texture = ExtResource("1_0xm2m")
 [node name="Level1" type="Node2D" parent="." unique_id=1804594795]
 
 [node name="Background4" type="Sprite2D" parent="Level1" unique_id=133071322]
-texture_filter = 2
+texture_filter = 1
 texture = ExtResource("8_w48qg")
 
 [node name="RoomTrigger" type="Area2D" parent="Level1" unique_id=1674809279 node_paths=PackedStringArray("camera")]
@@ -323,7 +328,7 @@ texture = ExtResource("3_h2yge")
 position = Vector2(320, 0)
 
 [node name="Background4" type="Sprite2D" parent="Level2" unique_id=67013515]
-texture_filter = 2
+texture_filter = 1
 texture = ExtResource("7_vivmo")
 
 [node name="RoomTrigger" type="Area2D" parent="Level2" unique_id=934098570 node_paths=PackedStringArray("camera")]
@@ -565,7 +570,7 @@ texture = ExtResource("7_efxa6")
 position = Vector2(640, 0)
 
 [node name="Background3" type="Sprite2D" parent="Level4" unique_id=1836450528]
-texture_filter = 2
+texture_filter = 1
 texture = ExtResource("8_w48qg")
 
 [node name="RoomTrigger" type="Area2D" parent="Level4" unique_id=442022426 node_paths=PackedStringArray("camera")]
@@ -995,7 +1000,7 @@ texture = ExtResource("1_ig7tw")
 position = Vector2(0, 240)
 
 [node name="Background" type="Sprite2D" parent="Level9" unique_id=1134629659]
-texture_filter = 2
+texture_filter = 1
 texture = ExtResource("8_ycdy4")
 
 [node name="RoomTrigger" type="Area2D" parent="Level9" unique_id=623890313 node_paths=PackedStringArray("camera")]
@@ -1271,7 +1276,7 @@ texture = ExtResource("1_ig7tw")
 position = Vector2(-320, 0)
 
 [node name="Background5" type="Sprite2D" parent="Level10" unique_id=1861240118]
-texture_filter = 2
+texture_filter = 1
 texture = ExtResource("7_vivmo")
 
 [node name="RoomTrigger" type="Area2D" parent="Level10" unique_id=1646920998 node_paths=PackedStringArray("camera")]
@@ -1366,7 +1371,7 @@ texture = ExtResource("1_ig7tw")
 position = Vector2(640, 480)
 
 [node name="Background3" type="Sprite2D" parent="Level7" unique_id=1088306294]
-texture_filter = 2
+texture_filter = 1
 texture = ExtResource("12_2cqfq")
 
 [node name="RoomTrigger" type="Area2D" parent="Level7" unique_id=1915290357 node_paths=PackedStringArray("camera")]
@@ -1657,7 +1662,7 @@ scale = Vector2(1, 0.5)
 texture = ExtResource("3_h2yge")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1157070088]
-position = Vector2(526, 317.00003)
+position = Vector2(-64, -6)
 rotation = 0.003164411
 script = ExtResource("3_1bvp3")
 
@@ -1703,3 +1708,18 @@ texture = ExtResource("9_kek77")
 position = Vector2(240, 0)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("9_kek77")
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D" unique_id=1176564105]
+texture_filter = 1
+position = Vector2(-138, -85)
+texture = ExtResource("19_getpj")
+
+[node name="Feather" type="Area2D" parent="." unique_id=733834848]
+script = ExtResource("19_82xsv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Feather" unique_id=99407837]
+shape = SubResource("RectangleShape2D_82xsv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Feather" unique_id=627914211]
+texture_filter = 1
+texture = ExtResource("19_cegan")

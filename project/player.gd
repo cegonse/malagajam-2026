@@ -10,6 +10,7 @@ var left_foot_sensor: Area2D = null
 var right_foot_sensor: Area2D = null
 var coyote_timer = 0.0
 var has_mask = false
+var feathers = 0
 
 func _ready() -> void:
 	left_foot_sensor = get_node("LeftFootSensor")
@@ -18,6 +19,12 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	update_animations()
+
+func on_collected_mask() -> void:
+	has_mask = true
+
+func on_feather_collected() -> void:
+	feathers = feathers + 1
 
 func update_animations() -> void:
 	var prev = animator.animation
@@ -125,6 +132,9 @@ func handle_rotation_discrete() -> void:
 		up_direction = up_direction.rotated(-rotation)
 
 func handle_rotation_direct() -> void:
+	if not has_mask:
+		return
+	
 	var x_axis = Input.get_axis("rotate_left", "rotate_right")
 	var y_axis = Input.get_axis("rotate_down", "rotate_up")
 	var axis = Vector2(-int(x_axis), int(y_axis))
