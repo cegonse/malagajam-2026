@@ -9,7 +9,7 @@ var can_rotate = false
 var left_foot_sensor: Area2D = null
 var right_foot_sensor: Area2D = null
 var coyote_timer = 0.0
-var has_mask = true
+var has_mask = false
 
 func _ready() -> void:
 	left_foot_sensor = get_node("LeftFootSensor")
@@ -25,9 +25,10 @@ func update_animations() -> void:
 	var mask_suffix = "_owl" if has_mask else ""
 	
 	if prev == "idle" + mask_suffix or prev == "walk" + mask_suffix:
-		if rot == 0 or rot == -180:
+		if up_direction == Vector2.UP or up_direction == Vector2.DOWN:
 			if abs(velocity.x) > 0:
 				var flip = false if velocity.x > 0 else true
+				flip = not flip if up_direction == Vector2.DOWN else flip
 				animator.flip_h = flip
 				animator.play("walk" + mask_suffix)
 		else:
