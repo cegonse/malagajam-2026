@@ -15,6 +15,10 @@ run/main_scene="uid://bdctcw0mss7ag"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [input]
 
 rotate_right={

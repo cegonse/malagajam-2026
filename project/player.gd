@@ -11,11 +11,13 @@ var right_foot_sensor: Area2D = null
 var coyote_timer = 0.0
 var has_mask = false
 var feathers = 0
+var alive = true
 
 func _ready() -> void:
 	left_foot_sensor = get_node("LeftFootSensor")
 	right_foot_sensor = get_node("RightFootSensor")
 	animator = get_node("Sprite2D")
+	animator.animation_finished.connect(on_animation_finised)
 
 func _process(delta: float) -> void:
 	update_animations()
@@ -30,6 +32,9 @@ func update_animations() -> void:
 	var prev = animator.animation
 	var rot = int(rotation_degrees)
 	var mask_suffix = "_owl" if has_mask else ""
+	
+	if not alive:
+		return
 	
 	if prev == "idle" + mask_suffix or prev == "walk" + mask_suffix:
 		if up_direction == Vector2.UP or up_direction == Vector2.DOWN:
@@ -56,11 +61,27 @@ func update_animations() -> void:
 		if up_direction == Vector2.UP and velocity.y > 0 or up_direction == Vector2.DOWN and velocity.y < 0 or up_direction == Vector2.LEFT and velocity.x > 0 or up_direction == Vector2.RIGHT and velocity.x < 0:
 			animator.play("fall" + mask_suffix)
 
+var last_spawn: Node2D
+
+func on_animation_finised() -> void:
+	var mask_suffix = "_owl" if has_mask else ""
+	
+	if animator.animation == "death":
+		animator.play("revive")
+		velocity = Vector2.ZERO
+		position = last_spawn.global_position
+		rotation = last_spawn.rotation
+		up_direction = Vector2.UP.rotated(rotation)
+
+	if animator.animation == "revive" and animator.frame == 4:
+		alive = true
+		animator.play("idle" + mask_suffix)
+
 func on_death(spawn: Node2D) -> void:
+	animator.play("death")
+	alive = false
+	last_spawn = spawn
 	velocity = Vector2.ZERO
-	position = spawn.global_position
-	rotation = spawn.rotation
-	up_direction = Vector2.UP.rotated(rotation)
 
 func is_on_coyote_time(delta: float, on_floor: bool) -> bool:
 	var left = left_foot_sensor.has_overlapping_bodies()
@@ -79,6 +100,9 @@ func is_on_coyote_time(delta: float, on_floor: bool) -> bool:
 	return false
 
 func handle_vertical_movement(delta: float) -> void:
+	if not alive:
+		return
+	
 	var gravity_magnitude = (get_gravity() * delta).y
 	var gravity = up_direction.rotated(PI) * gravity_magnitude
 	var jump_velocity = up_direction * jump_speed
@@ -101,6 +125,9 @@ func close_to(v1: Vector2, v2: Vector2) -> bool:
 	return v1.distance_to(v2) < 0.1
 
 func handle_horizontal_movement(delta: float) -> void:
+	if not alive:
+		return
+	
 	var x_axis = Input.get_axis("move_left", "move_right")
 	var y_axis = Input.get_axis("move_down", "move_up")
 	

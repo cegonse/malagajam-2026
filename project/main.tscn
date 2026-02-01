@@ -22,9 +22,11 @@
 [ext_resource type="Texture2D" uid="uid://d1mawpmbu4te8" path="res://sprites/levels/level11.png" id="12_ryguw"]
 [ext_resource type="Script" uid="uid://cbpx4bjyrln2" path="res://mask_collectible.gd" id="13_074og"]
 [ext_resource type="Texture2D" uid="uid://cvccej3m2prym" path="res://sprites/MaskCollectible.png" id="13_yaehf"]
+[ext_resource type="Texture2D" uid="uid://wmab58iwc1b8" path="res://sprites/levels/level8.png" id="14_a6jrf"]
 [ext_resource type="Script" uid="uid://cjsyp4x1cghk5" path="res://feather.gd" id="19_82xsv"]
 [ext_resource type="Texture2D" uid="uid://dc3utngi5ecv6" path="res://sprites/Golden Feather.png" id="19_cegan"]
 [ext_resource type="Texture2D" uid="uid://bjem1lxybovkj" path="res://sprites/Golden Feather_UI.png" id="19_getpj"]
+[ext_resource type="Texture2D" uid="uid://cevje557ls70y" path="res://sprites/Death Flash.png" id="20_lswn8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
 size = Vector2(16, 16)
@@ -33,9 +35,29 @@ size = Vector2(16, 16)
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vw27"]
-size = Vector2(16, 8)
+size = Vector2(12.916666, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_074og"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6jrf"]
+atlas = ExtResource("20_lswn8")
+region = Rect2(0, 0, 24, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xuqvo"]
+atlas = ExtResource("20_lswn8")
+region = Rect2(24, 0, 24, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsp4k"]
+atlas = ExtResource("20_lswn8")
+region = Rect2(48, 0, 24, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kq58d"]
+atlas = ExtResource("20_lswn8")
+region = Rect2(72, 0, 24, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_seu75"]
+atlas = ExtResource("20_lswn8")
+region = Rect2(96, 0, 24, 38)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_074og"]
 atlas = ExtResource("10_dg77c")
@@ -77,6 +99,26 @@ region = Rect2(240, 0, 24, 38)
 atlas = ExtResource("10_dg77c")
 region = Rect2(264, 0, 24, 38)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lswn8"]
+atlas = ExtResource("20_lswn8")
+region = Rect2(96, 0, 24, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htxhm"]
+atlas = ExtResource("20_lswn8")
+region = Rect2(72, 0, 24, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jq2sk"]
+atlas = ExtResource("20_lswn8")
+region = Rect2(48, 0, 24, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4k2k6"]
+atlas = ExtResource("20_lswn8")
+region = Rect2(24, 0, 24, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rl1p"]
+atlas = ExtResource("20_lswn8")
+region = Rect2(0, 0, 24, 38)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_w48qg"]
 atlas = ExtResource("10_dg77c")
 region = Rect2(96, 0, 24, 38)
@@ -95,6 +137,26 @@ region = Rect2(168, 0, 24, 38)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w48qg"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6jrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xuqvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsp4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kq58d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_seu75")
+}],
+"loop": false,
+"name": &"death",
+"speed": 16.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_074og")
@@ -154,6 +216,26 @@ animations = [{
 "loop": false,
 "name": &"jump_owl",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lswn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htxhm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jq2sk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4k2k6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rl1p")
+}],
+"loop": false,
+"name": &"revive",
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -599,6 +681,7 @@ scale = Vector2(6, 1)
 script = ExtResource("5_5vw27")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level4/Spikes9" unique_id=2039271977]
+position = Vector2(-0.6249991, 0)
 shape = SubResource("RectangleShape2D_5vw27")
 
 [node name="Spikes11" type="Area2D" parent="Level4" unique_id=1784357401]
@@ -721,6 +804,7 @@ scale = Vector2(6, 1)
 script = ExtResource("5_5vw27")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level6/Spikes9" unique_id=1211149471]
+position = Vector2(-0.91666794, 0)
 shape = SubResource("RectangleShape2D_5vw27")
 
 [node name="Spikes10" type="Area2D" parent="Level6" unique_id=1371491640]
@@ -845,10 +929,6 @@ script = ExtResource("5_5vw27")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level8/Spikes9" unique_id=1683589631]
 shape = SubResource("RectangleShape2D_5vw27")
 
-[node name="Sprite2D" type="Sprite2D" parent="Level8/Spikes9" unique_id=1785365420]
-scale = Vector2(1, 0.5)
-texture = ExtResource("3_h2yge")
-
 [node name="Spikes10" type="Area2D" parent="Level8" unique_id=103029561]
 position = Vector2(-124, 32)
 rotation = 1.5707964
@@ -858,10 +938,6 @@ script = ExtResource("5_5vw27")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level8/Spikes10" unique_id=1853331196]
 shape = SubResource("RectangleShape2D_5vw27")
 
-[node name="Sprite2D" type="Sprite2D" parent="Level8/Spikes10" unique_id=1053386983]
-scale = Vector2(1, 0.5)
-texture = ExtResource("3_h2yge")
-
 [node name="Floor" type="StaticBody2D" parent="Level8" unique_id=464313437]
 position = Vector2(0, 112)
 scale = Vector2(20, 1)
@@ -869,28 +945,19 @@ scale = Vector2(20, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level8/Floor" unique_id=1805071783]
 shape = SubResource("RectangleShape2D_h2yge")
 
-[node name="Sprite2D" type="Sprite2D" parent="Level8/Floor" unique_id=1860653671]
-texture = ExtResource("1_ig7tw")
-
 [node name="Floor2" type="StaticBody2D" parent="Level8" unique_id=1687910474]
-position = Vector2(-74, -23)
+position = Vector2(-72, -16)
 scale = Vector2(3, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level8/Floor2" unique_id=257560257]
 shape = SubResource("RectangleShape2D_h2yge")
 
-[node name="Sprite2D" type="Sprite2D" parent="Level8/Floor2" unique_id=396720124]
-texture = ExtResource("1_ig7tw")
-
 [node name="Floor3" type="StaticBody2D" parent="Level8" unique_id=259452340]
-position = Vector2(0, 32)
+position = Vector2(8, 32)
 scale = Vector2(3, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level8/Floor3" unique_id=642813713]
 shape = SubResource("RectangleShape2D_h2yge")
-
-[node name="Sprite2D" type="Sprite2D" parent="Level8/Floor3" unique_id=665804272]
-texture = ExtResource("1_ig7tw")
 
 [node name="Roof" type="StaticBody2D" parent="Level8" unique_id=426195025]
 position = Vector2(0, -112)
@@ -899,18 +966,12 @@ scale = Vector2(20, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level8/Roof" unique_id=442380899]
 shape = SubResource("RectangleShape2D_h2yge")
 
-[node name="Sprite2D" type="Sprite2D" parent="Level8/Roof" unique_id=1352754047]
-texture = ExtResource("1_ig7tw")
-
 [node name="Left" type="StaticBody2D" parent="Level8" unique_id=1326969720]
 position = Vector2(-144, 32)
 scale = Vector2(2, 9)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level8/Left" unique_id=1392770550]
 shape = SubResource("RectangleShape2D_h2yge")
-
-[node name="Sprite2D" type="Sprite2D" parent="Level8/Left" unique_id=901108843]
-texture = ExtResource("1_ig7tw")
 
 [node name="Right" type="StaticBody2D" parent="Level8" unique_id=713870398]
 position = Vector2(152, -24)
@@ -919,8 +980,9 @@ scale = Vector2(1, 10)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level8/Right" unique_id=453156081]
 shape = SubResource("RectangleShape2D_h2yge")
 
-[node name="Sprite2D" type="Sprite2D" parent="Level8/Right" unique_id=865173694]
-texture = ExtResource("1_ig7tw")
+[node name="Foreground" type="Sprite2D" parent="Level8" unique_id=1670987662]
+texture_filter = 1
+texture = ExtResource("14_a6jrf")
 
 [node name="Level9" type="Node2D" parent="." unique_id=1645734228]
 position = Vector2(0, 240)
@@ -1532,13 +1594,10 @@ script = ExtResource("3_1bvp3")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Player" unique_id=2041622182]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_w48qg")
-animation = &"fall_owl"
+animation = &"death"
 autoplay = "idle"
-
-[node name="Origin" type="Sprite2D" parent="Player" unique_id=936946532]
-position = Vector2(0, 18.999998)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_ig7tw")
+frame = 4
+frame_progress = 1.0
 
 [node name="Collider" type="CollisionShape2D" parent="Player" unique_id=832719775]
 position = Vector2(1.5079346, 4.992035)
