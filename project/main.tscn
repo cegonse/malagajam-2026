@@ -1340,6 +1340,10 @@ texture = ExtResource("20_xuqvo")
 [node name="Level5" type="Node2D" parent="." unique_id=719045654]
 position = Vector2(320, -240)
 
+[node name="Background" type="Sprite2D" parent="Level5" unique_id=732661683]
+texture_filter = 1
+texture = ExtResource("7_vivmo")
+
 [node name="Spawn" type="Node2D" parent="Level5" unique_id=58685158]
 position = Vector2(-126, 67)
 rotation = 1.5707964
