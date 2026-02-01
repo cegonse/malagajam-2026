@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cq4udajndwawy"
+path="res://.godot/imported/The Owl's Way Theme_Trailer.mp3-8bb432719edbcddb7991e4ed9f459ea0.mp3str"
+
+[deps]
+
+source_file="res://audio/The Owl's Way Theme_Trailer.mp3"
+dest_files=["res://.godot/imported/The Owl's Way Theme_Trailer.mp3-8bb432719edbcddb7991e4ed9f459ea0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

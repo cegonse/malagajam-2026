@@ -10,8 +10,14 @@ var left_foot_sensor: Area2D = null
 var right_foot_sensor: Area2D = null
 var coyote_timer = 0.0
 var has_mask = false
-var feathers = 5
+var feathers = 0
 var alive = true
+var credits = false
+
+func on_credits() -> void:
+	credits = true
+	rotation = 0
+	position = Vector2(-657,-1466)
 
 func _ready() -> void:
 	left_foot_sensor = get_node("LeftFootSensor")
@@ -185,6 +191,8 @@ func handle_rotation_direct() -> void:
 			rotation = -PI*0.5
 
 func _physics_process(delta: float) -> void:
+	if credits:
+		return
 	#handle_rotation_discrete()
 	handle_rotation_direct()
 	handle_vertical_movement(delta)

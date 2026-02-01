@@ -20,18 +20,25 @@
 [ext_resource type="Texture2D" uid="uid://d3f7ilet6d166" path="res://sprites/levels/level9.png" id="12_d13ii"]
 [ext_resource type="Texture2D" uid="uid://d1mawpmbu4te8" path="res://sprites/levels/level11.png" id="12_ryguw"]
 [ext_resource type="Script" uid="uid://cbpx4bjyrln2" path="res://mask_collectible.gd" id="13_074og"]
-[ext_resource type="Texture2D" uid="uid://cvccej3m2prym" path="res://sprites/MaskCollectible.png" id="13_yaehf"]
 [ext_resource type="Texture2D" uid="uid://wmab58iwc1b8" path="res://sprites/levels/level8.png" id="14_a6jrf"]
 [ext_resource type="Script" uid="uid://b6me6q2c6m86d" path="res://wall_trigger.gd" id="18_htxhm"]
+[ext_resource type="Texture2D" uid="uid://dsan5bv5agb67" path="res://sprites/Jump Prompt.png" id="18_jq2sk"]
 [ext_resource type="Texture2D" uid="uid://cdjufa4lavg6k" path="res://sprites/levels/level10.png" id="18_seu75"]
 [ext_resource type="Script" uid="uid://cjsyp4x1cghk5" path="res://feather.gd" id="19_82xsv"]
 [ext_resource type="Texture2D" uid="uid://dc3utngi5ecv6" path="res://sprites/Golden Feather.png" id="19_cegan"]
 [ext_resource type="Texture2D" uid="uid://bjem1lxybovkj" path="res://sprites/Golden Feather_UI.png" id="19_getpj"]
 [ext_resource type="Texture2D" uid="uid://b04h6x8xfi574" path="res://sprites/NpcSprites-Sheet.png" id="19_kq58d"]
 [ext_resource type="Texture2D" uid="uid://cevje557ls70y" path="res://sprites/Death Flash.png" id="20_lswn8"]
+[ext_resource type="Script" uid="uid://cs5yo2kpfp7to" path="res://back_trigger.gd" id="20_ok6jj"]
 [ext_resource type="Texture2D" uid="uid://bgxc526bu6lv1" path="res://sprites/NPC Requirement.png" id="20_seu75"]
 [ext_resource type="Texture2D" uid="uid://h32ac8nj5pvp" path="res://sprites/levels/level7.png" id="20_xuqvo"]
 [ext_resource type="Texture2D" uid="uid://dmrvq6r3xvcxg" path="res://sprites/levels/level5.png" id="22_kq58d"]
+[ext_resource type="Texture2D" uid="uid://bkbybyrvup7bw" path="res://sprites/Owl Mask Pickup.png" id="25_jq2sk"]
+[ext_resource type="Texture2D" uid="uid://dlc4hx7hd8ac2" path="res://sprites/Gravity Prompt-Sheet.png" id="27_4k2k6"]
+[ext_resource type="Texture2D" uid="uid://6706ruih5uli" path="res://sprites/Hollow Tree BG.png" id="35_0rl1p"]
+[ext_resource type="Script" uid="uid://3y5m0pfhnhys" path="res://ending_trigger.gd" id="37_facbu"]
+[ext_resource type="Texture2D" uid="uid://bpoa2ynf7x7ux" path="res://sprites/Credits.png" id="38_b1qrp"]
+[ext_resource type="Script" uid="uid://do41ahebt1ldb" path="res://credits_trigger.gd" id="38_come4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
 size = Vector2(16, 16)
@@ -73,6 +80,65 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_074og"]
+size = Vector2(27, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1qrp"]
+atlas = ExtResource("25_jq2sk")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_come4"]
+atlas = ExtResource("25_jq2sk")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h8e4i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1qrp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_come4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8e4i"]
+atlas = ExtResource("27_4k2k6")
+region = Rect2(0, 0, 128, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lmeg"]
+atlas = ExtResource("27_4k2k6")
+region = Rect2(128, 0, 128, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cp0l"]
+atlas = ExtResource("27_4k2k6")
+region = Rect2(256, 0, 128, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2t1y"]
+atlas = ExtResource("27_4k2k6")
+region = Rect2(384, 0, 128, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gngh3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8e4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lmeg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cp0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2t1y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a6jrf"]
 atlas = ExtResource("20_lswn8")
@@ -301,6 +367,8 @@ size = Vector2(13.015778, 23.996765)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
 size = Vector2(12, 6)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ok6jj"]
+
 [node name="Main" type="Node2D" unique_id=421798667]
 
 [node name="r320x240" type="Sprite2D" parent="." unique_id=1031881270]
@@ -409,6 +477,7 @@ script = ExtResource("5_5vw27")
 shape = SubResource("RectangleShape2D_5vw27")
 
 [node name="Foreground" type="Sprite2D" parent="Level1" unique_id=1816707326]
+z_index = 2
 texture_filter = 1
 texture = ExtResource("8_seu75")
 
@@ -583,6 +652,7 @@ position = Vector2(126, -66)
 texture = ExtResource("7_kek77")
 
 [node name="Foreground" type="Sprite2D" parent="Level2" unique_id=1159709516]
+z_index = 2
 texture_filter = 1
 texture = ExtResource("10_qsp4k")
 
@@ -718,6 +788,7 @@ scale = Vector2(1, 15)
 shape = SubResource("RectangleShape2D_h2yge")
 
 [node name="Foreground" type="Sprite2D" parent="Level4" unique_id=35206062]
+z_index = 2
 texture_filter = 1
 texture = ExtResource("10_0odxb")
 
@@ -864,6 +935,7 @@ scale = Vector2(1, 15)
 shape = SubResource("RectangleShape2D_h2yge")
 
 [node name="Foreground" type="Sprite2D" parent="Level6" unique_id=1420503205]
+z_index = 2
 texture_filter = 1
 texture = ExtResource("11_1u8w0")
 
@@ -970,6 +1042,7 @@ scale = Vector2(1, 10)
 shape = SubResource("RectangleShape2D_h2yge")
 
 [node name="Foreground" type="Sprite2D" parent="Level8" unique_id=1670987662]
+z_index = 2
 texture_filter = 1
 texture = ExtResource("14_a6jrf")
 
@@ -1098,6 +1171,7 @@ scale = Vector2(2, 10)
 shape = SubResource("RectangleShape2D_h2yge")
 
 [node name="Foreground" type="Sprite2D" parent="Level9" unique_id=750864971]
+z_index = 2
 texture_filter = 1
 texture = ExtResource("12_d13ii")
 
@@ -1205,8 +1279,14 @@ scale = Vector2(1, 6)
 shape = SubResource("RectangleShape2D_h2yge")
 
 [node name="Foreground" type="Sprite2D" parent="Level11" unique_id=267063993]
+z_index = 2
 texture_filter = 1
 texture = ExtResource("12_ryguw")
+
+[node name="Prompt" type="Sprite2D" parent="Level11" unique_id=595064807]
+texture_filter = 1
+position = Vector2(-10, 59)
+texture = ExtResource("18_jq2sk")
 
 [node name="Level10" type="Node2D" parent="." unique_id=840412836]
 position = Vector2(-320, 0)
@@ -1286,12 +1366,28 @@ position = Vector2(-7, 1)
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_seu75")
 
+[node name="BackWall" type="StaticBody2D" parent="Level10" unique_id=497642159]
+position = Vector2(-18, -3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level10/BackWall" unique_id=1300361647]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_seu75")
+
 [node name="WallTrigger" type="Area2D" parent="Level10" unique_id=283315243 node_paths=PackedStringArray("wall")]
 position = Vector2(22, 0)
 script = ExtResource("18_htxhm")
 wall = NodePath("../InvisibleWall")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level10/WallTrigger" unique_id=2002529244]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_htxhm")
+
+[node name="BackTrigger" type="Area2D" parent="Level10" unique_id=169284984 node_paths=PackedStringArray("wall")]
+position = Vector2(-76, 0)
+script = ExtResource("20_ok6jj")
+wall = NodePath("../BackWall")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level10/BackTrigger" unique_id=1051063800]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_htxhm")
 
@@ -1306,6 +1402,7 @@ position = Vector2(17, -5)
 texture = ExtResource("20_seu75")
 
 [node name="Foreground" type="Sprite2D" parent="Level10" unique_id=799557191]
+z_index = 2
 texture_filter = 1
 texture = ExtResource("18_seu75")
 
@@ -1384,15 +1481,27 @@ position = Vector2(0, 21)
 script = ExtResource("13_074og")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level7/MaskCollectible" unique_id=1873015882]
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_074og")
 
-[node name="Sprite2D" type="Sprite2D" parent="Level7/MaskCollectible" unique_id=272664279]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Level7/MaskCollectible" unique_id=1630905025]
 texture_filter = 1
-texture = ExtResource("13_yaehf")
+sprite_frames = SubResource("SpriteFrames_h8e4i")
+autoplay = "default"
+frame_progress = 0.99611896
 
 [node name="Foreground" type="Sprite2D" parent="Level7" unique_id=1711387710]
+z_index = 2
 texture_filter = 1
 texture = ExtResource("20_xuqvo")
+
+[node name="Prompt" type="AnimatedSprite2D" parent="Level7" unique_id=471135301]
+texture_filter = 1
+position = Vector2(1, -10)
+sprite_frames = SubResource("SpriteFrames_gngh3")
+autoplay = "default"
+frame = 3
+frame_progress = 0.94454837
 
 [node name="Level5" type="Node2D" parent="." unique_id=719045654]
 position = Vector2(320, -240)
@@ -1537,6 +1646,7 @@ script = ExtResource("5_5vw27")
 shape = SubResource("RectangleShape2D_5vw27")
 
 [node name="Foreground" type="Sprite2D" parent="Level5" unique_id=959439517]
+z_index = 2
 texture_filter = 1
 texture = ExtResource("22_kq58d")
 
@@ -1574,17 +1684,16 @@ texture_filter = 1
 texture = ExtResource("19_cegan")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1157070088]
-position = Vector2(-431, 301)
+position = Vector2(-434, 305.00003)
 rotation = 0.003164411
 script = ExtResource("3_1bvp3")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Player" unique_id=2041622182]
+z_index = 1
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_w48qg")
-animation = &"death"
+animation = &"idle"
 autoplay = "idle"
-frame = 4
-frame_progress = 1.0
 
 [node name="Collider" type="CollisionShape2D" parent="Player" unique_id=832719775]
 position = Vector2(1.5079346, 4.992035)
@@ -1602,24 +1711,27 @@ position = Vector2(-14, 16)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/LeftFootSensor" unique_id=802000222]
 shape = SubResource("RectangleShape2D_7mycd")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1913603423 node_paths=PackedStringArray("left_border", "right_border")]
-visible = false
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1913603423 node_paths=PackedStringArray("left_border", "right_border", "player")]
 zoom = Vector2(2.7, 2.7)
 script = ExtResource("9_4c57u")
 left_border = NodePath("Border")
 right_border = NodePath("Border2")
+player = NodePath("../Player")
 
 [node name="Border" type="Sprite2D" parent="Camera2D" unique_id=1917362740]
+z_index = 10
 position = Vector2(-240, 0)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("9_kek77")
 
 [node name="Border2" type="Sprite2D" parent="Camera2D" unique_id=1556491275]
+z_index = 10
 position = Vector2(240, 0)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("9_kek77")
 
 [node name="FeatherIcon" type="Sprite2D" parent="Camera2D" unique_id=1176564105]
+visible = false
 texture_filter = 1
 position = Vector2(-138, -98)
 texture = ExtResource("19_getpj")
@@ -1634,3 +1746,77 @@ shape = SubResource("RectangleShape2D_82xsv")
 [node name="Sprite2D" type="Sprite2D" parent="Feather" unique_id=627914211]
 texture_filter = 1
 texture = ExtResource("19_cegan")
+
+[node name="Ending" type="Node2D" parent="." unique_id=527884983]
+
+[node name="Background" type="Sprite2D" parent="Ending" unique_id=673530008]
+texture_filter = 1
+position = Vector2(-640, -762)
+texture = ExtResource("35_0rl1p")
+
+[node name="Floor2" type="StaticBody2D" parent="Ending" unique_id=566413363]
+position = Vector2(-638, 53)
+scale = Vector2(20, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ending/Floor2" unique_id=2145278627]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Floor3" type="StaticBody2D" parent="Ending" unique_id=1909731529]
+position = Vector2(-777, -586)
+rotation = 1.5707964
+scale = Vector2(120, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ending/Floor3" unique_id=1855913004]
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Floor4" type="StaticBody2D" parent="Ending" unique_id=2027713329]
+position = Vector2(-496, -807.99994)
+rotation = 1.5707964
+scale = Vector2(100, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ending/Floor4" unique_id=1785231657]
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="EndingTrigger" type="Area2D" parent="Ending" unique_id=393081518 node_paths=PackedStringArray("camera")]
+position = Vector2(-491, 21)
+scale = Vector2(1, 2)
+script = ExtResource("37_facbu")
+camera = NodePath("../../Camera2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ending/EndingTrigger" unique_id=1369469719]
+shape = SubResource("RectangleShape2D_ok6jj")
+
+[node name="CreditsTrigger" type="Area2D" parent="Ending" unique_id=1919564725 node_paths=PackedStringArray("player")]
+position = Vector2(-650, -1483)
+scale = Vector2(20, 1)
+script = ExtResource("38_come4")
+player = NodePath("../../Player")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ending/CreditsTrigger" unique_id=1938678328]
+shape = SubResource("RectangleShape2D_ok6jj")
+
+[node name="Credits" type="Sprite2D" parent="Ending" unique_id=899776744]
+texture_filter = 1
+position = Vector2(-639, -1473)
+texture = ExtResource("38_b1qrp")
+
+[node name="Border" type="Sprite2D" parent="Ending" unique_id=997879964]
+position = Vector2(-1041.0001, -779)
+scale = Vector2(30, 200)
+texture = ExtResource("9_kek77")
+
+[node name="Border4" type="Sprite2D" parent="Ending" unique_id=412166637]
+position = Vector2(-622, -3196)
+scale = Vector2(30, 200)
+texture = ExtResource("9_kek77")
+
+[node name="Border3" type="Sprite2D" parent="Ending" unique_id=1143970049]
+position = Vector2(-719, 1670)
+scale = Vector2(30, 200)
+texture = ExtResource("9_kek77")
+
+[node name="Border2" type="Sprite2D" parent="Ending" unique_id=72569448]
+position = Vector2(-238.99997, -1719)
+scale = Vector2(30, 200)
+texture = ExtResource("9_kek77")
