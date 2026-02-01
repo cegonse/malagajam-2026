@@ -3,13 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://5uh3tqra5334" path="res://sprites/box_gray.png" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://c4ksfp1g1xgf" path="res://sprites/box.png" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://b13nms8sscogd" path="res://player.gd" id="3_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://csj8asln5ds6p" path="res://sprites/box_red.png" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://dd4w2s22d7psi" path="res://spikes.gd" id="5_5vw27"]
 [ext_resource type="Script" uid="uid://btl1dkw37106e" path="res://room_trigger.gd" id="6_7mycd"]
 [ext_resource type="Texture2D" uid="uid://d3s70l3kmw3h8" path="res://sprites/trinket.png" id="7_efxa6"]
 [ext_resource type="Texture2D" uid="uid://c63yfscmidnjq" path="res://sprites/spawn.png" id="7_kek77"]
 [ext_resource type="Texture2D" uid="uid://uvqe483qqkfh" path="res://sprites/Treetopsbg1.png" id="7_vivmo"]
 [ext_resource type="Texture2D" uid="uid://d1tkkh7mrgm0d" path="res://sprites/Woodsbg1.png" id="8_dg77c"]
+[ext_resource type="Texture2D" uid="uid://csr6fddoeuypv" path="res://sprites/levels/level1.png" id="8_seu75"]
 [ext_resource type="Texture2D" uid="uid://dtdw5sppxbfsk" path="res://sprites/Treetopsbg2.png" id="8_w48qg"]
 [ext_resource type="Texture2D" uid="uid://c2chb86ndknp" path="res://sprites/Woodsbg2.png" id="8_ycdy4"]
 [ext_resource type="Script" uid="uid://pcdlbgueh07n" path="res://camera.gd" id="9_4c57u"]
@@ -298,18 +298,12 @@ scale = Vector2(20, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1/Floor" unique_id=578863854]
 shape = SubResource("RectangleShape2D_h2yge")
 
-[node name="Sprite2D" type="Sprite2D" parent="Level1/Floor" unique_id=1913372827]
-texture = ExtResource("1_ig7tw")
-
 [node name="Roof" type="StaticBody2D" parent="Level1" unique_id=90473185]
 position = Vector2(8, -112)
 scale = Vector2(19, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1/Roof" unique_id=278138807]
 shape = SubResource("RectangleShape2D_h2yge")
-
-[node name="Sprite2D" type="Sprite2D" parent="Level1/Roof" unique_id=422334079]
-texture = ExtResource("1_ig7tw")
 
 [node name="Left" type="StaticBody2D" parent="Level1" unique_id=1956122235]
 position = Vector2(-152, -72)
@@ -318,18 +312,12 @@ scale = Vector2(1, 6)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1/Left" unique_id=866304428]
 shape = SubResource("RectangleShape2D_h2yge")
 
-[node name="Sprite2D" type="Sprite2D" parent="Level1/Left" unique_id=1962425198]
-texture = ExtResource("1_ig7tw")
-
 [node name="Left2" type="StaticBody2D" parent="Level1" unique_id=1233802322]
 position = Vector2(-152, 64)
 scale = Vector2(1, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1/Left2" unique_id=1897318127]
 shape = SubResource("RectangleShape2D_h2yge")
-
-[node name="Sprite2D" type="Sprite2D" parent="Level1/Left2" unique_id=1408697573]
-texture = ExtResource("1_ig7tw")
 
 [node name="Platform8" type="StaticBody2D" parent="Level1" unique_id=1133427940]
 position = Vector2(-72, 64)
@@ -338,18 +326,12 @@ scale = Vector2(9, 5)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1/Platform8" unique_id=2084168065]
 shape = SubResource("RectangleShape2D_h2yge")
 
-[node name="Sprite2D" type="Sprite2D" parent="Level1/Platform8" unique_id=863609709]
-texture = ExtResource("1_ig7tw")
-
 [node name="Platform10" type="StaticBody2D" parent="Level1" unique_id=1879739125]
 position = Vector2(96, -16)
 scale = Vector2(6, 9)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1/Platform10" unique_id=43407402]
 shape = SubResource("RectangleShape2D_h2yge")
-
-[node name="Sprite2D" type="Sprite2D" parent="Level1/Platform10" unique_id=915248345]
-texture = ExtResource("1_ig7tw")
 
 [node name="Platform9" type="StaticBody2D" parent="Level1" unique_id=642553184]
 position = Vector2(0, -96)
@@ -358,9 +340,6 @@ scale = Vector2(18, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1/Platform9" unique_id=1704467589]
 shape = SubResource("RectangleShape2D_h2yge")
 
-[node name="Sprite2D" type="Sprite2D" parent="Level1/Platform9" unique_id=1998198762]
-texture = ExtResource("1_ig7tw")
-
 [node name="Platform11" type="StaticBody2D" parent="Level1" unique_id=2103234199]
 position = Vector2(-112, -32)
 scale = Vector2(4, 1)
@@ -368,18 +347,12 @@ scale = Vector2(4, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1/Platform11" unique_id=1126814353]
 shape = SubResource("RectangleShape2D_h2yge")
 
-[node name="Sprite2D" type="Sprite2D" parent="Level1/Platform11" unique_id=279097372]
-texture = ExtResource("1_ig7tw")
-
 [node name="Right" type="StaticBody2D" parent="Level1" unique_id=514375675]
 position = Vector2(152, -24)
 scale = Vector2(1, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1/Right" unique_id=1045150253]
 shape = SubResource("RectangleShape2D_h2yge")
-
-[node name="Sprite2D" type="Sprite2D" parent="Level1/Right" unique_id=1861750659]
-texture = ExtResource("1_ig7tw")
 
 [node name="Spawn" type="Node2D" parent="Level1" unique_id=234128425]
 position = Vector2(130, 88)
@@ -396,10 +369,6 @@ script = ExtResource("5_5vw27")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1/Spikes9" unique_id=883769880]
 shape = SubResource("RectangleShape2D_5vw27")
 
-[node name="Sprite2D" type="Sprite2D" parent="Level1/Spikes9" unique_id=457199305]
-scale = Vector2(1, 0.5)
-texture = ExtResource("3_h2yge")
-
 [node name="Spikes10" type="Area2D" parent="Level1" unique_id=1486756827]
 position = Vector2(44, -16)
 rotation = 1.5707964
@@ -409,9 +378,9 @@ script = ExtResource("5_5vw27")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1/Spikes10" unique_id=288162145]
 shape = SubResource("RectangleShape2D_5vw27")
 
-[node name="Sprite2D" type="Sprite2D" parent="Level1/Spikes10" unique_id=1615219336]
-scale = Vector2(1, 0.5)
-texture = ExtResource("3_h2yge")
+[node name="Foreground" type="Sprite2D" parent="Level1" unique_id=1816707326]
+texture_filter = 1
+texture = ExtResource("8_seu75")
 
 [node name="Level2" type="Node2D" parent="." unique_id=509770115]
 position = Vector2(320, 0)
