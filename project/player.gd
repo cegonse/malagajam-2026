@@ -10,7 +10,7 @@ var left_foot_sensor: Area2D = null
 var right_foot_sensor: Area2D = null
 var coyote_timer = 0.0
 var has_mask = false
-var feathers = 0
+var feathers = 5
 var alive = true
 
 func _ready() -> void:

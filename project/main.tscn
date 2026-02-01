@@ -22,11 +22,14 @@
 [ext_resource type="Script" uid="uid://cbpx4bjyrln2" path="res://mask_collectible.gd" id="13_074og"]
 [ext_resource type="Texture2D" uid="uid://cvccej3m2prym" path="res://sprites/MaskCollectible.png" id="13_yaehf"]
 [ext_resource type="Texture2D" uid="uid://wmab58iwc1b8" path="res://sprites/levels/level8.png" id="14_a6jrf"]
+[ext_resource type="Script" uid="uid://b6me6q2c6m86d" path="res://wall_trigger.gd" id="18_htxhm"]
 [ext_resource type="Texture2D" uid="uid://cdjufa4lavg6k" path="res://sprites/levels/level10.png" id="18_seu75"]
 [ext_resource type="Script" uid="uid://cjsyp4x1cghk5" path="res://feather.gd" id="19_82xsv"]
 [ext_resource type="Texture2D" uid="uid://dc3utngi5ecv6" path="res://sprites/Golden Feather.png" id="19_cegan"]
 [ext_resource type="Texture2D" uid="uid://bjem1lxybovkj" path="res://sprites/Golden Feather_UI.png" id="19_getpj"]
+[ext_resource type="Texture2D" uid="uid://b04h6x8xfi574" path="res://sprites/NpcSprites-Sheet.png" id="19_kq58d"]
 [ext_resource type="Texture2D" uid="uid://cevje557ls70y" path="res://sprites/Death Flash.png" id="20_lswn8"]
+[ext_resource type="Texture2D" uid="uid://bgxc526bu6lv1" path="res://sprites/NPC Requirement.png" id="20_seu75"]
 [ext_resource type="Texture2D" uid="uid://h32ac8nj5pvp" path="res://sprites/levels/level7.png" id="20_xuqvo"]
 [ext_resource type="Texture2D" uid="uid://dmrvq6r3xvcxg" path="res://sprites/levels/level5.png" id="22_kq58d"]
 
@@ -40,6 +43,34 @@ size = Vector2(16, 16)
 size = Vector2(14.886907, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_82xsv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_seu75"]
+size = Vector2(20, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htxhm"]
+size = Vector2(20, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok6jj"]
+atlas = ExtResource("19_kq58d")
+region = Rect2(0, 0, 24, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_facbu"]
+atlas = ExtResource("19_kq58d")
+region = Rect2(24, 0, 24, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b1qrp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok6jj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_facbu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_074og"]
 
@@ -1248,6 +1279,32 @@ scale = Vector2(18, 4)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level10/Right3" unique_id=1462443469]
 shape = SubResource("RectangleShape2D_h2yge")
 
+[node name="InvisibleWall" type="StaticBody2D" parent="Level10" unique_id=632796747]
+position = Vector2(-7, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level10/InvisibleWall" unique_id=1826183363]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_seu75")
+
+[node name="WallTrigger" type="Area2D" parent="Level10" unique_id=283315243 node_paths=PackedStringArray("wall")]
+position = Vector2(22, 0)
+script = ExtResource("18_htxhm")
+wall = NodePath("../InvisibleWall")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level10/WallTrigger" unique_id=2002529244]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_htxhm")
+
+[node name="NPC" type="AnimatedSprite2D" parent="Level10" unique_id=886814812]
+texture_filter = 1
+position = Vector2(-13, 24)
+sprite_frames = SubResource("SpriteFrames_b1qrp")
+
+[node name="FeatherMinimum" type="Sprite2D" parent="Level10" unique_id=96458894]
+texture_filter = 1
+position = Vector2(17, -5)
+texture = ExtResource("20_seu75")
+
 [node name="Foreground" type="Sprite2D" parent="Level10" unique_id=799557191]
 texture_filter = 1
 texture = ExtResource("18_seu75")
@@ -1546,6 +1603,7 @@ position = Vector2(-14, 16)
 shape = SubResource("RectangleShape2D_7mycd")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1913603423 node_paths=PackedStringArray("left_border", "right_border")]
+visible = false
 zoom = Vector2(2.7, 2.7)
 script = ExtResource("9_4c57u")
 left_border = NodePath("Border")
@@ -1562,9 +1620,8 @@ scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("9_kek77")
 
 [node name="FeatherIcon" type="Sprite2D" parent="Camera2D" unique_id=1176564105]
-visible = false
 texture_filter = 1
-position = Vector2(-138, -85)
+position = Vector2(-138, -98)
 texture = ExtResource("19_getpj")
 
 [node name="Feather" type="Area2D" parent="." unique_id=733834848]
